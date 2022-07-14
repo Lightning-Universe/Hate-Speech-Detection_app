@@ -126,14 +126,12 @@ class HateSpeechDetectionApp(L.LightningFlow):
 if __name__ == "__main__":
     poster_dir = "resources"
     paper = "https://arxiv.org/pdf/2004.06465"
-    github = "https://github.com/hate-alert/DE-LIMIT"
     tabs = ["Poster", "Model Demo", "Paper"]
 
     app = L.LightningApp(
         HateSpeechDetectionApp(
             poster_dir=poster_dir,
             paper=paper,
-            github=github,
             launch_gradio=True,
             tab_order=tabs,
             launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
