@@ -4,7 +4,7 @@
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
 <h1 style="margin-bottom: 10pt;">Poster: Hate Speech Detection</h1>
-<h2>This is a poster on Hate Speech Detection using Lightning App</h2>
+<h2>Poster on Hate Speech Detection made with Lightning App</h2>
 </div>
 <div style="flex: 1">
     <div style="display: flex; align-items: center;">
