@@ -1,45 +1,38 @@
-# ⚡️ Lightning Research Poster Template 🔬
+# ⚡ Hate Speech Detection 🔬
 
-Use this app to share your research paper results. This app lets you connect a blogpost, arxiv paper, and a jupyter
-notebook and even have an interactive demo for people to play with the model. This app also allows industry
-practitioners to reproduce your work.
+This App is a Poster on Hate Speech Detection.
+It showcases [paper](https://arxiv.org/pdf/2004.06465.pdf), poster and model demo where you can try out the model from
+UI.
 
 ## Getting started
 
-To create a Research Poster you can install this app via the [Lightning CLI](https://lightning.ai/lightning-docs/) or
-[use the template](https://docs.github.com/en/articles/creating-a-repository-from-a-template) from GitHub and
-manually install the app as mentioned below.
+You can install this app via the [Lightning CLI](https://lightning.ai/lightning-docs/) or
+clone the repo from GitHub to manually install the app as mentioned below.
 
 ### Installation
 
 #### With Lightning CLI
 
-`lightning install app lightning/research_poster`
+`lightning install app lightning/hate-speech-detection`
 
-#### Use GitHub template
-
-Click on the "Use this template" button at the top, name your app repo, and GitHub will create a fork of this app to
-your account.
-
-> ![use-template.png](./assets/use-template.png)
-
-You can clone the forked app repo and follow the steps below to install the app.
+#### From Github
 
 ```
-git clone https://github.com/YOUR-USERNAME/lightning-template-research-app.git
-cd lightning-template-research-app
+git clone https://github.com/lightning-AI/LAI-hate-speech-detection-App.git
+cd LAI-hate-speech-detection-App
 pip install -r requirements.txt
 pip install -e .
 ```
 
-Once you have installed the app, you can goto the `lightning-template-research-app` folder and
+Once you have installed the app, you can goto the `LAI-hate-speech-detection-App` folder and
 run `lightning run app app.py --cloud` from terminal.
 This will launch the template app in your default browser with tabs containing research paper, blog, Training
 logs, and Model Demo.
 
-You should see something like this in your browser:
+[//]: # (You should see something like this in your browser:)
 
-> ![image](./assets/demo.png)
+[//]: # ()
+[//]: # (> ![image]&#40;./assets/demo.png&#41;)
 
 You can modify the content of this app and customize it to your research.
 At the root of this template, you will find [app.py](./app.py) that contains the `ResearchApp` class. This class
@@ -61,27 +54,24 @@ each of the arguments does in the docstrings.
 
 ```python
 # update app.py at the root of the repo
-import lightning as L
-
-paper = "https://arxiv.org/pdf/2103.00020.pdf"
-blog = "https://openai.com/blog/clip/"
-github = "https://github.com/mlfoundations/open_clip"
-wandb = "https://wandb.ai/aniketmaurya/herbarium-2022/runs/2dvwrme5"
-tabs = ["Poster", "Blog", "Paper", "Notebook", "Training Logs", "Model Demo"]
+poster_dir = "resources"
+paper = "https://arxiv.org/pdf/2004.06465"
+blog = "https://paperswithcode.com/sota/hate-speech-detection-on-automatic"
+github = "https://github.com/hate-alert/DE-LIMIT"
+tabs = ["Poster", "Model Demo", "Blog", "Paper", "Notebook Viewer"]
 
 app = L.LightningApp(
     ResearchApp(
-        poster_dir="resources",
+        poster_dir=poster_dir,
         paper=paper,
-        blog=blog,
-        training_log_url=wandb,
         github=github,
-        notebook_path="resources/Interacting_with_CLIP.ipynb",
-        launch_jupyter_lab=False,
+        blog=blog,
         launch_gradio=True,
         tab_order=tabs,
+        launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
     )
 )
+
 ```
 
 ## FAQs

@@ -46,16 +46,16 @@ class ResearchApp(L.LightningFlow):
     """
 
     def __init__(
-        self,
-        poster_dir: str,
-        paper: Optional[str] = None,
-        blog: Optional[str] = None,
-        github: Optional[str] = None,
-        notebook_path: Optional[str] = None,
-        training_log_url: Optional[str] = None,
-        launch_jupyter_lab: bool = False,
-        launch_gradio: bool = False,
-        tab_order: Optional[List[str]] = None,
+            self,
+            poster_dir: str,
+            paper: Optional[str] = None,
+            blog: Optional[str] = None,
+            github: Optional[str] = None,
+            notebook_path: Optional[str] = None,
+            training_log_url: Optional[str] = None,
+            launch_jupyter_lab: bool = False,
+            launch_gradio: bool = False,
+            tab_order: Optional[List[str]] = None,
     ) -> None:
 
         super().__init__()
@@ -113,7 +113,7 @@ class ResearchApp(L.LightningFlow):
             tabs.append({"name": "Training Logs", "content": self.training_logs})
 
         if self.model_demo:
-            tabs.append({"name": "Model Demo: Unsplash Image Search", "content": self.model_demo.url})
+            tabs.append({"name": "Model Demo", "content": self.model_demo.url})
 
         if self.jupyter_lab:
             tabs.append({"name": "Jupyter Lab", "content": self.jupyter_lab.url})
@@ -136,18 +136,17 @@ class ResearchApp(L.LightningFlow):
 
 if __name__ == "__main__":
     poster_dir = "resources"
-    paper = "https://arxiv.org/pdf/2103.00020"
-    blog = "https://openai.com/blog/clip/"
-    wandb = "https://wandb.ai/manan-goel/clip-lightning-image_retrieval/runs/1cedtohj"
-    tabs = ["Blog", "Paper", "Poster", "Notebook Viewer", "Training Logs", "Model Demo: Unsplash Image Search"]
+    paper = "https://arxiv.org/pdf/2004.06465"
+    blog = "https://paperswithcode.com/sota/hate-speech-detection-on-automatic"
+    github = "https://github.com/hate-alert/DE-LIMIT"
+    tabs = ["Poster", "Model Demo", "Blog", "Paper", "Notebook Viewer"]
 
     app = L.LightningApp(
         ResearchApp(
             poster_dir=poster_dir,
-            # paper=paper,
-            # blog=blog,
-            # training_log_url=wandb,
-            notebook_path="resources/Interacting_with_CLIP.ipynb",
+            paper=paper,
+            github=github,
+            blog=blog,
             launch_gradio=True,
             tab_order=tabs,
             launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
