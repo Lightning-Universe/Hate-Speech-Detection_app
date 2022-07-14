@@ -1,10 +1,19 @@
 # ⚡ Hate Speech Detection 🔬
 
-This App is a Poster on Hate Speech Detection.
-It showcases [paper](https://arxiv.org/pdf/2004.06465.pdf), poster and model demo where you can try out the model from
-UI.
+As any social media user might have experienced by now, it's becoming effortless to get likes, comments, and shares on
+posts with divisive content due to the recommendation algorithms used in these applications. Increasingly, online hate
+speech is leading to real-world harm, and these companies are struggling to identify hateful posts, with users & groups
+altering their speech patterns online to avoid detection.
 
-> Credits to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee 
+We propose building any applications with natural language user input in an Inclusive First approach with an easy-to-use
+multilingual hate speech detector running in a production-ready and enterprise-grade environment. Our approach makes it
+easier develop and deploy inclusive applications, without any cloud prerequisites, as a quick way to build any
+distributed ML system. In this app, we will show you how to use this hate speech detector component within an
+application & deploy it to Lightning.ai
+
+
+> Credits to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee for their
+> work [DE-LIMIT](https://github.com/hate-alert/DE-LIMIT)
 
 ## Getting started
 
