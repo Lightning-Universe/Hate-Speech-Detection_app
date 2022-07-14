@@ -3,7 +3,7 @@
 This demo is inspired from the work of []().
 Checkout the original implementation [here](()
 
-The app integration is done at `research_app/components/model_demo.py`.
+The app integration is done at `hate_speech_detector/components/model_demo.py`.
 """
 import torch
 from loguru import logger

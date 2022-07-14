@@ -3,7 +3,7 @@
 <img src="https://cdn.iconscout.com/icon/free/png-256/openai-1524384-1290687.png" width="100px">
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
-<h1 style="margin-bottom: 10pt;">Demo: CLIP Research Poster</h1>
+<h1 style="margin-bottom: 10pt;">Poster: Hate Speech Detection</h1>
 <h2>A demo of CLIP research paper using Lightning App</h2>
 </div>
 <div style="flex: 1">

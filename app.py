@@ -8,9 +8,9 @@ from poster import Poster
 from rich import print
 from rich.logging import RichHandler
 
-from research_app.components.jupyter_notebook import JupyterLab
-from research_app.components.model_demo import ModelDemo
-from research_app.utils import clone_repo, notebook_to_html
+from hate_speech_detector.components.jupyter_notebook import JupyterLab
+from hate_speech_detector.components.model_demo import ModelDemo
+from hate_speech_detector.utils import clone_repo, notebook_to_html
 
 FORMAT = "%(message)s"
 logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
@@ -27,7 +27,7 @@ class StaticNotebookViewer(L.LightningFlow):
         return frontend.web.StaticWebFrontend(serve_dir=self.serve_dir)
 
 
-class ResearchApp(L.LightningFlow):
+class HateSpeechDetectionApp(L.LightningFlow):
     """Share your paper "bundled" with the arxiv link, poster, live jupyter notebook, interactive demo to try the model
     and more!
 
@@ -41,21 +41,21 @@ class ResearchApp(L.LightningFlow):
     launch_jupyter_lab: Launch a full-fledged Jupyter Lab instance. Note that sharing Jupyter publicly is not
         recommended and exposes security vulnerability to the cloud. Defaults to False.
     launch_gradio: Launch Gradio demo. Defaults to False. You should update the
-        `research_app/components/model_demo.py` file to your use case.
+        `hate_speech_detector/components/model_demo.py` file to your use case.
     tab_order: You can optionally reorder the tab layout by providing a list of tab name.
     """
 
     def __init__(
-        self,
-        poster_dir: str,
-        paper: Optional[str] = None,
-        blog: Optional[str] = None,
-        github: Optional[str] = None,
-        notebook_path: Optional[str] = None,
-        training_log_url: Optional[str] = None,
-        launch_jupyter_lab: bool = False,
-        launch_gradio: bool = False,
-        tab_order: Optional[List[str]] = None,
+            self,
+            poster_dir: str,
+            paper: Optional[str] = None,
+            blog: Optional[str] = None,
+            github: Optional[str] = None,
+            notebook_path: Optional[str] = None,
+            training_log_url: Optional[str] = None,
+            launch_jupyter_lab: bool = False,
+            launch_gradio: bool = False,
+            tab_order: Optional[List[str]] = None,
     ) -> None:
 
         super().__init__()
@@ -113,7 +113,7 @@ class ResearchApp(L.LightningFlow):
             tabs.append({"name": "Training Logs", "content": self.training_logs})
 
         if self.model_demo:
-            tabs.append({"name": "Model Demo: Unsplash Image Search", "content": self.model_demo.url})
+            tabs.append({"name": "Model Demo", "content": self.model_demo.url})
 
         if self.jupyter_lab:
             tabs.append({"name": "Jupyter Lab", "content": self.jupyter_lab.url})
@@ -136,18 +136,15 @@ class ResearchApp(L.LightningFlow):
 
 if __name__ == "__main__":
     poster_dir = "resources"
-    paper = "https://arxiv.org/pdf/2103.00020"
-    blog = "https://openai.com/blog/clip/"
-    wandb = "https://wandb.ai/manan-goel/clip-lightning-image_retrieval/runs/1cedtohj"
-    tabs = ["Blog", "Paper", "Poster", "Notebook Viewer", "Training Logs", "Model Demo: Unsplash Image Search"]
+    paper = "https://arxiv.org/pdf/2004.06465"
+    github = "https://github.com/hate-alert/DE-LIMIT"
+    tabs = ["Poster", "Model Demo", "Paper"]
 
     app = L.LightningApp(
-        ResearchApp(
+        HateSpeechDetectionApp(
             poster_dir=poster_dir,
-            # paper=paper,
-            # blog=blog,
-            # training_log_url=wandb,
-            notebook_path="resources/Interacting_with_CLIP.ipynb",
+            paper=paper,
+            github=github,
             launch_gradio=True,
             tab_order=tabs,
             launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability

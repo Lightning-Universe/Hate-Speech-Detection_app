@@ -15,7 +15,7 @@ class JupyterLite(L.LightningWork):
     contents: folder location to be copied while building jupyter lite. This will appear in the Jupyterlab.
     """
 
-    def __init__(self, contents="research_app", **kwargs):
+    def __init__(self, contents="hate_speech_detector", **kwargs):
         super().__init__(parallel=True, **kwargs)
         assert os.path.exists(contents), f"{contents} not exist at {os.getcwd()}"
         self.contents = contents

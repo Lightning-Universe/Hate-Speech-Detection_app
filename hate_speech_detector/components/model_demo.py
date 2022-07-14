@@ -2,7 +2,7 @@ import gradio as gr
 from lightning.app.components.serve import ServeGradio
 from loguru import logger
 
-from research_app.hpd_model import HPDModel
+from hate_speech_detector.hpd_model import HPDModel
 
 
 class ModelDemo(ServeGradio):
