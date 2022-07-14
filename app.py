@@ -62,7 +62,7 @@ class HateSpeechDetectionApp(L.LightningFlow):
         self.notebook_path = notebook_path
         self.jupyter_lab = None
         self.model_demo = None
-        self.poster = Poster(resource_dir=self.poster_dir)
+        self.poster = None
         self.notebook_viewer = None
         self.tab_order = tab_order
 
@@ -71,6 +71,9 @@ class HateSpeechDetectionApp(L.LightningFlow):
 
         if launch_gradio:
             self.model_demo = ModelDemo()
+
+        if poster_dir:
+            self.poster = Poster(resource_dir=self.poster_dir)
 
         if notebook_path:
             self.notebook_viewer = StaticNotebookViewer(notebook_path)
@@ -87,7 +90,8 @@ class HateSpeechDetectionApp(L.LightningFlow):
     def configure_layout(self) -> List[Dict[str, str]]:
         tabs = []
 
-        tabs.append({"name": "Poster", "content": self.poster.url + "/poster.html"})
+        if self.poster:
+            tabs.append({"name": "Poster", "content": self.poster.url + "/poster.html"})
 
         if self.blog:
             tabs.append({"name": "Blog", "content": self.blog})
