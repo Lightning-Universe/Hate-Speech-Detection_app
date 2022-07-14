@@ -4,7 +4,7 @@
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
 <h1 style="margin-bottom: 10pt;">Poster: Hate Speech Detection</h1>
-<h2>A demo of CLIP research paper using Lightning App</h2>
+<h2>This is a poster on Hate Speech Detection using Lightning App</h2>
 </div>
 <div style="flex: 1">
     <div style="display: flex; align-items: center;">
@@ -19,29 +19,23 @@
 
 --split--
 
-# Natural Language based Image Search
+# Hate Speech Detection
 
-## OpenAI introduced a neural network called CLIP which efficiently learns visual concepts from natural language supervision.
+[//]: # (## OpenAI introduced a neural network called CLIP which efficiently learns visual concepts from natural language supervision.)
 
-This app is a demo
-of [Lightning Research Template app](https://github.com/Lightning-AI/lightning-template-research-app) which allows
-authors to build an app to share their everything
-related to their work at a single place.
-Explore the tabs at the top of this app to view blog, paper, training logs and model demo.
+As any social media user might have experienced by now, it's becoming effortless to get likes, comments, and shares on
+posts with divisive content due to the recommendation algorithms used in these applications. Increasingly, online hate
+speech is leading to real-world harm, and these companies are struggling to identify hateful posts, with users & groups
+altering their speech patterns online to avoid detection.
 
-You can fork this app and edit to customize according to your need.
+We propose building any applications with natural language user input in an Inclusive First approach with an easy-to-use
+multilingual hate speech detector running in a production-ready and enterprise-grade environment. Our approach makes it
+easier develop and deploy inclusive applications, without any cloud prerequisites, as a quick way to build any
+distributed ML system. In this app, we will show you how to use this hate speech detector component within an
+application & deploy it to Lightning.ai
 
-Kudos to Soumik Rakshit and Manan Goel for their awesome
-repository [clip-lightning](https://github.com/soumik12345/clip-lightning)
-
-Thanks to [Vivien](https://github.com/vivien000) for his inspiring application using
-CLIP [Minimal user-friendly demo of OpenAI's CLIP for semantic image search](https://github.com/vivien000/clip-demo).
-
-<img src="https://openaiassets.blob.core.windows.net/$web/clip/draft/20210104b/overview-a.svg">
-
-CLIP pre-trains an image encoder and a text encoder to predict which images were paired with which texts in our dataset.
-We then use this behavior to turn CLIP into a zero-shot classifier. We convert all of a dataset's classes into captions
-such as "a photo of a dog" and predict the class of the caption CLIP estimates best pairs with a given image.
+> Model to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee for their
+> work [DE-LIMIT](https://github.com/hate-alert/DE-LIMIT)
 
 --split--
 
