@@ -8,7 +8,6 @@ from poster import Poster
 from rich import print
 from rich.logging import RichHandler
 
-from hate_speech_detector.components.jupyter_notebook import JupyterLab
 from hate_speech_detector.components.model_demo import ModelDemo
 from hate_speech_detector.utils import clone_repo, notebook_to_html
 
@@ -73,13 +72,6 @@ class HateSpeechDetectionApp(L.LightningFlow):
         if github:
             clone_repo(github)
 
-        if launch_jupyter_lab:
-            self.jupyter_lab = JupyterLab()
-            logger.warning(
-                "Sharing Jupyter publicly is not recommended and exposes security vulnerability "
-                "to the cloud instance."
-            )
-
         if launch_gradio:
             self.model_demo = ModelDemo()
 
@@ -114,9 +106,6 @@ class HateSpeechDetectionApp(L.LightningFlow):
 
         if self.model_demo:
             tabs.append({"name": "Model Demo", "content": self.model_demo.url})
-
-        if self.jupyter_lab:
-            tabs.append({"name": "Jupyter Lab", "content": self.jupyter_lab.url})
 
         return self._order_tabs(tabs)
 
