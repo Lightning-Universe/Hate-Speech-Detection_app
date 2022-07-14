@@ -27,9 +27,7 @@ class StaticNotebookViewer(L.LightningFlow):
 
 
 class HateSpeechDetectionApp(L.LightningFlow):
-    """Share your paper "bundled" with the arxiv link, poster, live jupyter notebook, interactive demo to try the model
-    and more!
-
+    """
     poster_dir: folder path of markdown file. The markdown will be converted into a poster and launched as static
         html.
     paper: [Optional] Arxiv link to your paper
@@ -52,7 +50,6 @@ class HateSpeechDetectionApp(L.LightningFlow):
             github: Optional[str] = None,
             notebook_path: Optional[str] = None,
             training_log_url: Optional[str] = None,
-            launch_jupyter_lab: bool = False,
             launch_gradio: bool = False,
             tab_order: Optional[List[str]] = None,
     ) -> None:
@@ -134,6 +131,5 @@ if __name__ == "__main__":
             paper=paper,
             launch_gradio=True,
             tab_order=tabs,
-            launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
         )
     )
