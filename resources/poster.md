@@ -57,39 +57,3 @@ graph LR
     B -->|DB integration| D[Lightning Work 2]
     B -->|User auth| E[Lightning Work 3]
 ```
-
-### Available at : `Lightning-AI/lightning-template-research-app/app.py`
-
-```python
-import lightning as L
-
-paper = "https://arxiv.org/pdf/2103.00020.pdf"
-blog = "https://openai.com/blog/clip/"
-github = "https://github.com/soumik12345/clip-lightning/tree/AddModelCheckpoint"
-wandb = "https://wandb.ai/manan-goel/clip-lightning-image_retrieval/runs/1cedtohj"
-
-app = L.LightningApp(
-    ResearchApp(
-        resource_path="resources",
-        paper=paper,
-        blog=blog,
-        training_log_url=wandb,
-        github=github,
-        notebook_path="resources/Interacting_with_CLIP.ipynb",
-        launch_gradio=True,
-    )
-)
-```
-
-### Citation
-
-```bibtex
-
-@article{YourName,
-  title={Your Title},
-  author={Your team},
-  journal={Location},
-  year={Year}
-}
-
-```
