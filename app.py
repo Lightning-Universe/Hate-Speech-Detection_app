@@ -8,9 +8,8 @@ from poster import Poster
 from rich import print
 from rich.logging import RichHandler
 
-from hate_speech_detector.components.jupyter_notebook import JupyterLab
 from hate_speech_detector.components.model_demo import ModelDemo
-from hate_speech_detector.utils import clone_repo, notebook_to_html
+from hate_speech_detector.utils import notebook_to_html
 
 FORMAT = "%(message)s"
 logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
@@ -28,9 +27,7 @@ class StaticNotebookViewer(L.LightningFlow):
 
 
 class HateSpeechDetectionApp(L.LightningFlow):
-    """Share your paper "bundled" with the arxiv link, poster, live jupyter notebook, interactive demo to try the model
-    and more!
-
+    """
     poster_dir: folder path of markdown file. The markdown will be converted into a poster and launched as static
         html.
     paper: [Optional] Arxiv link to your paper
@@ -46,16 +43,15 @@ class HateSpeechDetectionApp(L.LightningFlow):
     """
 
     def __init__(
-            self,
-            poster_dir: str,
-            paper: Optional[str] = None,
-            blog: Optional[str] = None,
-            github: Optional[str] = None,
-            notebook_path: Optional[str] = None,
-            training_log_url: Optional[str] = None,
-            launch_jupyter_lab: bool = False,
-            launch_gradio: bool = False,
-            tab_order: Optional[List[str]] = None,
+        self,
+        poster_dir: str,
+        paper: Optional[str] = None,
+        blog: Optional[str] = None,
+        github: Optional[str] = None,
+        notebook_path: Optional[str] = None,
+        training_log_url: Optional[str] = None,
+        launch_gradio: bool = False,
+        tab_order: Optional[List[str]] = None,
     ) -> None:
 
         super().__init__()
@@ -66,22 +62,15 @@ class HateSpeechDetectionApp(L.LightningFlow):
         self.notebook_path = notebook_path
         self.jupyter_lab = None
         self.model_demo = None
-        self.poster = Poster(resource_dir=self.poster_dir)
+        self.poster = None
         self.notebook_viewer = None
         self.tab_order = tab_order
 
-        if github:
-            clone_repo(github)
-
-        if launch_jupyter_lab:
-            self.jupyter_lab = JupyterLab()
-            logger.warning(
-                "Sharing Jupyter publicly is not recommended and exposes security vulnerability "
-                "to the cloud instance."
-            )
-
         if launch_gradio:
             self.model_demo = ModelDemo()
+
+        if poster_dir:
+            self.poster = Poster(resource_dir=self.poster_dir)
 
         if notebook_path:
             self.notebook_viewer = StaticNotebookViewer(notebook_path)
@@ -98,7 +87,8 @@ class HateSpeechDetectionApp(L.LightningFlow):
     def configure_layout(self) -> List[Dict[str, str]]:
         tabs = []
 
-        tabs.append({"name": "Poster", "content": self.poster.url + "/poster.html"})
+        if self.poster:
+            tabs.append({"name": "Poster", "content": self.poster.url + "/poster.html"})
 
         if self.blog:
             tabs.append({"name": "Blog", "content": self.blog})
@@ -114,9 +104,6 @@ class HateSpeechDetectionApp(L.LightningFlow):
 
         if self.model_demo:
             tabs.append({"name": "Model Demo", "content": self.model_demo.url})
-
-        if self.jupyter_lab:
-            tabs.append({"name": "Jupyter Lab", "content": self.jupyter_lab.url})
 
         return self._order_tabs(tabs)
 
@@ -137,16 +124,13 @@ class HateSpeechDetectionApp(L.LightningFlow):
 if __name__ == "__main__":
     poster_dir = "resources"
     paper = "https://arxiv.org/pdf/2004.06465"
-    github = "https://github.com/hate-alert/DE-LIMIT"
     tabs = ["Poster", "Model Demo", "Paper"]
 
     app = L.LightningApp(
         HateSpeechDetectionApp(
             poster_dir=poster_dir,
             paper=paper,
-            github=github,
             launch_gradio=True,
             tab_order=tabs,
-            launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
         )
     )
