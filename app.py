@@ -123,13 +123,11 @@ class HateSpeechDetectionApp(L.LightningFlow):
 
 if __name__ == "__main__":
     poster_dir = "resources"
-    paper = "https://arxiv.org/pdf/2004.06465"
-    tabs = ["Poster", "Model Demo", "Paper"]
+    tabs = ["Poster", "Model Demo"]
 
     app = L.LightningApp(
         HateSpeechDetectionApp(
             poster_dir=poster_dir,
-            paper=paper,
             launch_gradio=True,
             tab_order=tabs,
         )
