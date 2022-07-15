@@ -9,7 +9,7 @@ from rich import print
 from rich.logging import RichHandler
 
 from hate_speech_detector.components.model_demo import ModelDemo
-from hate_speech_detector.utils import clone_repo, notebook_to_html
+from hate_speech_detector.utils import notebook_to_html
 
 FORMAT = "%(message)s"
 logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
@@ -43,15 +43,15 @@ class HateSpeechDetectionApp(L.LightningFlow):
     """
 
     def __init__(
-            self,
-            poster_dir: str,
-            paper: Optional[str] = None,
-            blog: Optional[str] = None,
-            github: Optional[str] = None,
-            notebook_path: Optional[str] = None,
-            training_log_url: Optional[str] = None,
-            launch_gradio: bool = False,
-            tab_order: Optional[List[str]] = None,
+        self,
+        poster_dir: str,
+        paper: Optional[str] = None,
+        blog: Optional[str] = None,
+        github: Optional[str] = None,
+        notebook_path: Optional[str] = None,
+        training_log_url: Optional[str] = None,
+        launch_gradio: bool = False,
+        tab_order: Optional[List[str]] = None,
     ) -> None:
 
         super().__init__()
@@ -65,9 +65,6 @@ class HateSpeechDetectionApp(L.LightningFlow):
         self.poster = None
         self.notebook_viewer = None
         self.tab_order = tab_order
-
-        if github:
-            clone_repo(github)
 
         if launch_gradio:
             self.model_demo = ModelDemo()
