@@ -1,8 +1,8 @@
 """This module implements the demo for Hate speech detection model.
 
-This demo is inspired from the work of Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee.
-Checkout the original implementation https://github.com/hate-alert/DE-LIMIT
-
+This demo is inspired from the work of Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee. Checkout the
+original implementation
+https://github.com/hate-alert/DE-LIMIT
 The app integration is done at `hate_speech_detector/components/model_demo.py`.
 """
 import torch
