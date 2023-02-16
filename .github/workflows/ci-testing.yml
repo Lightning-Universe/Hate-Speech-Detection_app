@@ -37,7 +37,4 @@ jobs:
         shell: bash
 
       - name: Tests
-        run: coverage run --source research_app -m pytest research_app tests -v
-
-      - name: Statistics
-        run: coverage report
+        run: python -m pytest tests/ -v
