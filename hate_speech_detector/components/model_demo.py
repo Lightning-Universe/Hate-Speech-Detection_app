@@ -1,7 +1,5 @@
-"""
-Model credits to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee for
-their work [DE-LIMIT](https://github.com/hate-alert/DE-LIMIT)
-"""
+"""Model credits to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee for their work [DE-
+LIMIT](https://github.com/hate-alert/DE-LIMIT)"""
 import gradio as gr
 from lightning.app.components.serve import ServeGradio
 from loguru import logger

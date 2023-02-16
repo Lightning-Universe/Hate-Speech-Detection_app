@@ -11,7 +11,6 @@ easier develop and deploy inclusive applications, without any cloud prerequisite
 distributed ML system. In this app, we will show you how to use this hate speech detector component within an
 application & deploy it to Lightning.ai
 
-
 > Credits to Sai Saketh Aluru, Binny Mathew, Punyajoy Saha and Animesh Mukherjee for their
 > work [DE-LIMIT](https://github.com/hate-alert/DE-LIMIT)
 
